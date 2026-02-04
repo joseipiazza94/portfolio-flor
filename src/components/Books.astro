@@ -1,0 +1,36 @@
+---
+import {books} from '../data/books.js';
+import BookItem from './BookItem.astro';
+---
+
+<section id="libros">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Libros que ilustré</h2>
+
+    {books.map((book) => (
+        <BookItem
+            id={book.id}
+            title={book.title}
+            synopsis={book.synopsis}
+            cover={book.cover}
+            spreads={book.spreads}
+        />
+    ))}
+</section>
+
+<script>
+    import PhotoSwipeLightbox from 'photoswipe/lightbox';
+    import 'photoswipe/style.css';
+
+    const books = document.querySelectorAll('.book-gallery-trigger');
+
+    books.forEach((bookElement) => {
+        const lightbox = new PhotoSwipeLightbox ({
+            gallery: bookElement,
+            children: 'a',
+            pswpModule: () => import('photoswipe')
+        });
+
+        lightbox.init();
+    });
+
+</script>

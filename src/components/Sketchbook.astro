@@ -1,0 +1,96 @@
+---
+import {sketches} from '../data/sketches.js';
+---
+
+<section id="sketchbook">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Sketchbook</h2>
+    <div class="scroller">
+        {sketches.map((sketch) => (
+            <div class="sketch-item">
+            <img src={sketch.img} alt={sketch.title} />
+            </div>
+    ))}
+    </div>
+</section>
+
+<style>
+
+.scroller {
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    cursor: grab;
+    scrollbar-width: none;
+}
+
+.scroller::-webkit-scrollbar {
+    display: none;
+}
+
+.scroller.active {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.sketch-item {
+    flex: 0 0 auto;
+    transition: transform 0.3s;
+}
+
+.sketch-item:hover {
+    transform: translateY (-10px);
+}
+
+.sketch-item img {
+    height: 350px;
+    width: auto;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.sketch-item img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+</style>
+
+<script>
+
+const slider = document.querySelector('.scroller');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+});
+
+slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+
+    e.preventDefault();
+
+    const x = e.pageX - slider.offsetLeft;
+
+    const walk = (x - startX) * 3;
+
+    slider.scrollLeft = scrollLeft - walk;
+});

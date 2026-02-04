@@ -1,20 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Card from '../components/Card.astro';
+import Gallery from '../components/Gallery.astro';
+import Books from '../components/Books.astro';
+import Sketchbook from '../components/Sketchbook.astro';
 ---
 
 <BaseLayout>
-  <div class="galeria">
-	<Card titulo="Ilustracion Libro" descripcion="acuarelas para niños" imagenUrl="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600" />
-	<Card titulo="Panqueques" descripcion="acuarelas para niños" imagenUrl="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=600" />
-	<Card titulo="Botellas" descripcion="acuarelas para niños" imagenUrl="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=600" />
-	<Card titulo="Ilustracion Libro" descripcion="acuarelas para niños" imagenUrl="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600" />
-	<Card titulo="Panqueques" descripcion="acuarelas para niños" imagenUrl="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=600" />
-	<Card titulo="Botellas" descripcion="acuarelas para niños" imagenUrl="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=600" />
-	<Card titulo="Ilustracion Libro" descripcion="acuarelas para niños" imagenUrl="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600" />
-	<Card titulo="Panqueques" descripcion="acuarelas para niños" imagenUrl="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=600" />
-	<Card titulo="Botellas" descripcion="acuarelas para niños" imagenUrl="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=600" />
-  </div>
+	<Gallery />
+	<div style="height 100px";> </div>
+	<Books />
+	<div style="height 100px";> </div>
+	<Sketchbook />
 </BaseLayout>
 
 <style>
@@ -30,8 +26,6 @@ import Card from '../components/Card.astro';
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 }
-
-
 
 </style>
 
