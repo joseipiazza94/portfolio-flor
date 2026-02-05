@@ -22,7 +22,7 @@ const { id, title, cover, author, year, synopsis, buyLink, spreads } = Astro.pro
                     data-pswp-height={spreads[0].height}
                     target="_blank"
                 >
-                Ver interior 📖
+                 📖
                 </a>
             )}
 
@@ -65,19 +65,31 @@ const { id, title, cover, author, year, synopsis, buyLink, spreads } = Astro.pro
     }
 
     .btn-interior {
-        display: inline-block;
-        margin-top: 1rem;
-        padding: 0.8rem 1.5rem;
-        background-color: #2d3748;
-        color: white;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+        
+        background-color: transparent;
+        border: 2px solid #333;
+        color: #333;
+        border-radius: 0;
+
+        cursor: pointer;
+        transition: all 0.3s ease;
         text-decoration: none;
-        border-radius: 50px;
-        font weight: bold;
-        transition: background 0.3s;
     }
 
     .btn-interior:hover {
-        background-color: #000;
+        background-color: #333;
+        border-color: #333;
+        transform: translateY(-2px);
+        box-shadow: 4px 4px 0px #EB82BE;
+
     }
 
     .hidden-spread {

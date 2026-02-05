@@ -19,6 +19,14 @@ body {
     line-height: 1.6;
     font-weight: 300;
     color: #4a4a4a;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg, video {
+    max-width: 100%;
+    height: auto;
 }
 
 html, body {
@@ -28,6 +36,50 @@ html, body {
     color: #18181b;
 }
 
+/* SELECCIÓN DE TEXTO CON COLORES DEL LOGO */
+::selection {
+    background-color: #f2e86b;
+    color: #1a1a1a;
+}
+
+::moz-selection {
+    background-color: #f2e86b;
+    color: #1a1a1a;
+}
 
 
+/* BARRA DE SCROLL PERSONALIZADA ---> Firefox 1 color, otros navegadores arcoiris*/
 
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f8f9fa;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(
+        180deg,
+        #43876e 0%,
+        #67b3ec 33%,
+        #f2e86d 66%,
+        #f56ed9 100%
+    );
+    
+    border-radius: 10px;
+    border: 3px solid rgba(0,0,0,0);
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    border:1px solid rgba(0,0,0,0);
+}
+
+
+@supports (-moz-appearance: none) {
+    html {
+        scrollbar-width: thin;
+        scrollbar-color: #68b4ed #f0f0f0;
+    }
+}

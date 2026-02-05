@@ -12,9 +12,7 @@ import '../global.css';
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+		
 	</head>
 	<body>
 	    
@@ -23,7 +21,26 @@ import '../global.css';
 			<slot />
 		</div>
         	<Footer />
-	   
+
+<!-- SCRIPT PARA COLOREAR ENLACES DE FORMA ALEATORIA -->
+
+	<script>
+	const logoColors = ["#43876f", "#67b4ec", "#d4c000", "#f26bd6"];
+	const allLinks = document.querySelectorAll("a");
+
+	allLinks.forEach(link => {
+		link.addEventListener("mouseenter", () => {
+			const randomIndex = Math.floor(Math.random()*logoColors.length);
+		link.style.color = logoColors[randomIndex];
+		link.style.transition = "color 0.3s ease";
+		});
+
+		link.addEventListener("mouseleave", () => {
+			link.style.color = "";	
+		})
+	});
+	</script>
+
 	</body>
 </html>
 
