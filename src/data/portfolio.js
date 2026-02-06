@@ -1,196 +1,114 @@
+import imgCluckCooChicken from '../assets/portfolio/cluck-cluck-coo-chicken-libro-ilustrado.png';
+import imgAshtonTortugaFlamengo from '../assets/portfolio/ashton-tortuga-flamengo-libro-ilustrado.jpg';
+import imgFishyOnFire from '../assets/portfolio/fishy-adventure-fire-libro-ilustrado.png';
+import imgHatNestEggs from '../assets/portfolio/hat-nest-eggs-libro-ilustrado.jpg';
+import imgColorfulCaterpillar from '../assets/portfolio/colorfull-caterpillar-libro-ilustrado.png';
+import imgCaracachaEzio from '../assets/portfolio/peraclus-ezio-caracacha.png';
+import imgBrujaCaracacha from '../assets/portfolio/caracacha-full.png';
+import imgChipitoInParis from '../assets/portfolio/chipito.png';
+
 export const ilustraciones = [
     {
-        "id": "dibujo-1",
-        "src": "https://placehold.co/600x400",
-        "width": 600,
-        "height": 400,
-        "fullRes": "https://placehold.co/1800x1200",
-        "fullResWidth": 1800,
-        "fullResHeight": 1200,
-        "alt": "Descripcion breve del dibujo 1",
-        
-        "meta": {
-            "title": "Dibujo 1",
-            "year": "2024",
-            "technique": "Tecnica 1",
-            "client": "Editorial 1"
+        id: "cluck-coo-chicken-1",
+        imagen: imgCluckCooChicken,
+        alt: "pagina 8 cluck cluck coo chicken",
+        meta: {
+            "title": "Cluck, Cluck, Coo Chicken",
+            "year": "2022",
+            "technique": "Ilustración Digital",
+            "client": "Comisión Privada"
         }
-
-    },
-
-
-
-    {
-        "id": "dibujo-2",
-        "src": "https://placehold.co/800x600",
-        "width": 800,
-        "height": 600,
-        "fullRes": "https://placehold.co/1600x1200",
-        "fullResWidth": 1600,
-        "fullResHeight": 1200,
-        "alt": "Descripcion breve del dibujo 2",
-        
-        "meta": {
-            "title": "Dibujo 2",
-            "year": "2024",
-            "technique": "Tecnica 2",
-            "client": "Editorial 2"
-        }
-
     },
 
     {
-        "id": "dibujo-4",
-        "src": "https://placehold.co/600x1200",
-        "width": 600,
-        "height": 1200,
-        "fullRes": "https://placehold.co/1200x2400",
-        "fullResWidth": 1200,
-        "fullResHeight": 2400,
-        "alt": "Descripcion breve del dibujo 4",
+        id: "ashton-tortuga-flamengo",
+        imagen: imgAshtonTortugaFlamengo,
+        alt: "flamengo rosa del libro Ashton no es solo una Tortuga",
         
-        "meta": {
-            "title": "Dibujo 4",
-            "year": "2024",
-            "technique": "Tecnica 4",
-            "client": "Editorial 4"
+        meta: {
+            "title": "Ashton no es solo una Tortuga",
+            "year": "2023",
+            "technique": "Ilustración Digital",
+            "client": "para Silvia Royo López"
         }
-
     },
 
     {
-        "id": "dibujo-3",
-        "src": "https://placehold.co/400",
-        "width": 400,
-        "height": 400,
-        "fullRes": "https://placehold.co/1000",
-        "fullResWidth": 1000,
-        "fullResHeight": 1000,
-        "alt": "Descripcion breve del dibujo 3",
+        id: "fishy-adventure-fire",
+        imagen: imgFishyOnFire,
+        alt: "pez comió picante y se prendió fuego",
         
-        "meta": {
-            "title": "Dibujo 3",
-            "year": "2024",
-            "technique": "Tecnica 3",
-            "client": "Editorial 3"
+        meta: {
+            "title": "The Fishy Adventures of Ali and Fred",
+            "year": "2023",
+            "technique": "Ilustración Digital",
+            "client": "para Laurence Jupp"
         }
-
-    },
-
-
-
-    {
-        "id": "dibujo-5",
-        "src": "https://placehold.co/800x600",
-        "width": 800,
-        "height": 600,
-        "fullRes": "https://placehold.co/800x600",
-        "fullResWidth": 1600,
-        "fullResHeight": 1200,
-        "alt": "Descripcion breve del dibujo 5",
-        
-        "meta": {
-            "title": "Dibujo 5",
-            "year": "2026",
-            "technique": "Tecnica 5",
-            "client": "Editorial 5"
-        }
-
-    },
-    
-    {
-        "id": "dibujo-5",
-        "src": "https://placehold.co/800x600",
-        "width": 800,
-        "height": 600,
-        "fullRes": "https://placehold.co/800x600",
-        "fullResWidth": 1600,
-        "fullResHeight": 1200,
-        "alt": "Descripcion breve del dibujo 5",
-        
-        "meta": {
-            "title": "Dibujo 5",
-            "year": "2026",
-            "technique": "Tecnica 5",
-            "client": "Editorial 5"
-        }
-
     },
 
     {
-        "id": "dibujo-4",
-        "src": "https://placehold.co/600x1200",
-        "width": 600,
-        "height": 1200,
-        "fullRes": "https://placehold.co/1200x2400",
-        "fullResWidth": 1200,
-        "fullResHeight": 2400,
-        "alt": "Descripcion breve del dibujo 4",
+        id: "hat-nest-eggs",
+        imagen: imgHatNestEggs,
+        alt: "Sombrero-nido",
         
-        "meta": {
-            "title": "Dibujo 4",
-            "year": "2024",
-            "technique": "Tecnica 4",
-            "client": "Editorial 4"
+        meta: {
+            "title": "There is a Net on yout Hat!",
+            "year": "2023",
+            "technique": "Ilustración Digital",
+            "client": "Comisión Privada"
         }
-
     },
 
     {
-        "id": "dibujo-3",
-        "src": "https://placehold.co/400",
-        "width": 400,
-        "height": 400,
-        "fullRes": "https://placehold.co/1000",
-        "fullResWidth": 1000,
-        "fullResHeight": 1000,
-        "alt": "Descripcion breve del dibujo 3",
+        id: "colorful-caterpillar",
+        imagen: imgColorfulCaterpillar,
+        alt: "Una oruga muy colorida",
         
-        "meta": {
-            "title": "Dibujo 3",
-            "year": "2024",
-            "technique": "Tecnica 3",
-            "client": "Editorial 3"
+        meta: {
+            "title": "A Colorful Caterpilar finds her true colors",
+            "year": "2023",
+            "technique": "Ilustración Digital",
+            "client": "para Ryan Ivory"
         }
-
     },
 
     {
-        "id": "dibujo-1",
-        "src": "https://placehold.co/600x400",
-        "width": 600,
-        "height": 400,
-        "fullRes": "https://placehold.co/1800x1200",
-        "fullResWidth": 1800,
-        "fullResHeight": 1200,
-        "alt": "Descripcion breve del dibujo 1",
+        id: "colorful-caterpillar",
+        imagen: imgCaracachaEzio,
+        alt: "Una oruga muy colorida",
         
-        "meta": {
-            "title": "Dibujo 1",
-            "year": "2024",
-            "technique": "Tecnica 1",
-            "client": "Editorial 1"
+        meta: {
+            "title": "A Colorful Caterpilar finds her true colors",
+            "year": "2023",
+            "technique": "Ilustración Digital",
+            "client": "para Ryan Ivory"
         }
-
     },
 
     {
-        "id": "dibujo-3",
-        "src": "https://placehold.co/400",
-        "width": 400,
-        "height": 400,
-        "fullRes": "https://placehold.co/1000",
-        "fullResWidth": 1000,
-        "fullResHeight": 1000,
-        "alt": "Descripcion breve del dibujo 3",
+        id: "colorful-caterpillar",
+        imagen: imgBrujaCaracacha,
+        alt: "Una oruga muy colorida",
         
-        "meta": {
-            "title": "Dibujo 3",
-            "year": "2024",
-            "technique": "Tecnica 3",
-            "client": "Editorial 3"
+        meta: {
+            "title": "A Colorful Caterpilar finds her true colors",
+            "year": "2023",
+            "technique": "Ilustración Digital",
+            "client": "para Ryan Ivory"
         }
+    },
 
+    {
+        id: "colorful-caterpillar",
+        imagen: imgChipitoInParis,
+        alt: "Una oruga muy colorida",
+        
+        meta: {
+            "title": "A Colorful Caterpilar finds her true colors",
+            "year": "2023",
+            "technique": "Ilustración Digital",
+            "client": "para Ryan Ivory"
+        }
     }
 
 ]

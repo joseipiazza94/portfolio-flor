@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "astro": "^5.16.15",
-    "photoswipe": "^5.4.4"
+    "photoswipe": "^5.4.4",
+    "photoswipe-dynamic-caption-plugin": "^1.2.7"
   }
 }
