@@ -1,36 +1,212 @@
 ---
-import {books} from '../data/books.js';
-import BookItem from './BookItem.astro';
+import { Image } from 'astro:assets';
+import { books } from '../data/books.js'; // Verifica que sea 'books' o 'libros' según tu archivo
+import 'photoswipe/style.css';
 ---
 
-<section id="libros">
-    <h2 style="text-align: center; margin-bottom: 2rem;">Libros que ilustré</h2>
+<section class="books-section">
+    <h2 class="section-title">Libros ilustrados</h2>
+    
+    <div class="carousel-layout">
+        
+        <button id="prevBtn" class="nav-btn" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" width="30" height="30" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
 
-    {books.map((book) => (
-        <BookItem
-            id={book.id}
-            title={book.title}
-            synopsis={book.synopsis}
-            cover={book.cover}
-            spreads={book.spreads}
-        />
-    ))}
+        <div class="shelf-container" id="shelf">
+            {books.map((book) => (
+                <div class="book-item book-gallery" id={book.id}>
+                    {book.paginas.map((pagina, index) => (
+                        <a 
+                            href={pagina.img.src}
+                            data-pswp-width={pagina.img.width}
+                            data-pswp-height={pagina.img.height}
+                            target="_blank"
+                            data-pswp-caption-content={`<strong>${book.titulo}</strong><br>${pagina.desc}`}
+                            class={index === 0 ? "book-cover-link" : "hidden-page"}
+                            style={index !== 0 ? "display: none;" : ""} 
+                        >
+                            {index === 0 && (
+                                <div class="cover-wrapper">
+                                    <Image 
+                                        src={pagina.img} 
+                                        alt={book.titulo}
+                                        width={500} 
+                                        class="cover-img"
+                                    />
+                                    <p class="book-title-preview">{book.titulo}</p>
+                                </div>
+                            )}
+                        </a>
+                    ))}
+                </div>
+            ))}
+        </div>
+
+        <button id="nextBtn" class="nav-btn" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" width="30" height="30" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+    </div>
 </section>
+
+<style>
+    .books-section {
+        padding: 2rem 0;
+        width: 100%;
+        overflow: hidden; /* Evita scroll horizontal en la página entera */
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: #333;
+    }
+
+    /* --- LAYOUT NUEVO (FLEXBOX) --- */
+    .carousel-layout {
+        display: flex; /* Pone botones y lista en una sola fila */
+        align-items: center; /* Centra las flechas verticalmente */
+        justify-content: center;
+        gap: 1rem; /* Espacio entre flecha y libros */
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    /* --- CONTENEDOR DE LIBROS --- */
+    .shelf-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 2rem;
+        padding: 20px 10px; /* Un poco de aire interno */
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        
+        /* Ocultar barra de scroll */
+        scrollbar-width: none; 
+        -ms-overflow-style: none;
+        
+        /* IMPORTANTE: Que ocupe el espacio disponible pero no más */
+        flex-grow: 1; 
+        max-width: 1400px; /* Tope de ancho para pantallas gigantes */
+    }
+
+    .shelf-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* --- LIBROS --- */
+    .book-item {
+        flex: 0 0 auto;
+        width: 400px; /* Ajustado: 500px a veces es muy grande para pantallas medias */
+        max-width: 70vw; /* Responsive seguro */
+        scroll-snap-align: center;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .book-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .cover-img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        display: block;
+        border: 1px solid #eee;
+    }
+
+    .book-title-preview {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #444;
+    }
+
+    a.book-cover-link {
+    text-decoration: none;
+  }
+    /* --- BOTONES (FLECHAS) --- */
+    .nav-btn {
+        background: white;
+        border: 2px solid #ddd;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0; /* Evita que se aplasten */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #555;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        transition: all 0.2s;
+        
+        /* Ya no usamos position: absolute */
+    }
+
+    .nav-btn:hover {
+        background: #EB82BE;
+        border-color: #EB82BE;
+        color: white;
+        transform: scale(1.1);
+    }
+
+    .nav-btn:active {
+        transform: scale(0.95);
+    }
+
+    /* EN MÓVIL: Ocultamos flechas (se usa el dedo) */
+    @media (max-width: 768px) {
+        .nav-btn { display: none; }
+        .shelf-container { gap: 1rem; }
+        .book-item { width: 80vw; }
+    }
+</style>
 
 <script>
     import PhotoSwipeLightbox from 'photoswipe/lightbox';
-    import 'photoswipe/style.css';
+    import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
 
-    const books = document.querySelectorAll('.book-gallery-trigger');
-
-    books.forEach((bookElement) => {
-        const lightbox = new PhotoSwipeLightbox ({
-            gallery: bookElement,
+    // 1. PhotoSwipe
+    const bookGalleries = document.querySelectorAll('.book-gallery');
+    bookGalleries.forEach((galleryElement) => {
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: galleryElement,
             children: 'a',
-            pswpModule: () => import('photoswipe')
+            pswpModule: () => import('photoswipe'),
+            paddingFn: (viewportSize) => ({ top: 0, bottom: 30, left: 0, right: 0 }),
         });
-
+        new PhotoSwipeDynamicCaption(lightbox, {
+            type: 'auto',
+            captionContent: (slide) => slide.data.element.getAttribute('data-pswp-caption-content')
+        });
         lightbox.init();
     });
 
+    // 2. Lógica de Navegación
+    // Buscamos los elementos y verificamos que existan antes de agregar eventos
+    const shelf = document.getElementById('shelf');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    if (shelf && prevBtn && nextBtn) {
+        
+        // Cantidad a scrollear: Ancho del libro + espacio (aprox 400 + 32)
+        const scrollAmount = 450; 
+
+        nextBtn.addEventListener('click', () => {
+            shelf.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            shelf.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+    } else {
+        console.error("No se encontraron los elementos de navegación del carrusel.");
+    }
 </script>

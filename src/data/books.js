@@ -1,49 +1,118 @@
+import coverHairyWorm from '../assets/books/hairy-worm-book/hairy-worm-cover.png';
+import page01HairyWorm from '../assets/books/hairy-worm-book/hairy-worm-page-01.png';
+import page02HairyWorm from '../assets/books/hairy-worm-book/hairy-worm-page-14.png';
+import doublePage01HairyWorm from '../assets/books/hairy-worm-book/hairy-worm-pages-09-10.png';
+
 export const books = [
     {
-        "id": "libro-1",
-        "title": "titulo-1",
-        "cover": "https://placehold.co/600x800",
-        "author": "autor-1",
-        "year": "2024",
-        "synopsis": "descripcion breve del libro 1...",
-        "buyLink": "https://amazon.com/",
+        id: "hairy-worm-book",
+        titulo: "A Very Hairy Worm & his Lost Rythm",
+        autor: "Emily Dungan",
+        year: "2024",
 
-        "spreads": [
+        portada: coverHairyWorm,
+
+        paginas: [
             {
-                img:'https://placehold.co/1200x800/222/FFF?text=Pagina+1-2',
-                width: 1200,
-                height: 800
+                img: coverHairyWorm,
+                desc: "Portada"
             },
-
             {
-                img:'https://placehold.co/1200x800/222/FFF?text=Pagina+3-4',
-                width: 1200,
-                height: 800 
+                img: page01HairyWorm,
+                desc: "Página 1 - Introducción"
+            },
+            {
+                img: page02HairyWorm,
+                desc: "Página 14 - El grillo Millard"
+            },
+            {
+                img: doublePage01HairyWorm,
+                desc: "Páginas 9 y 10 - Bella, la mariposa"
             }
         ]
     },
 
     {
-        "id": "libro-2",
-        "title": "titulo-2",
-        "cover": "https://placehold.co/600x800",
-        "author": "autor-2",
-        "year": "2024",
-        "synopsis": "descripcion breve del libro 2...",
-        "buyLink": "https://amazon.com/",
+        id: "hairy-worm-book",
+        titulo: "A Very Hairy Worm & his Lost Rythm",
+        autor: "Emily Dungan",
+        year: "2024",
 
-        "spreads": [
+        portada: coverHairyWorm,
+
+        paginas: [
             {
-                img:'https://placehold.co/1200x800/222/FFF?text=Pagina+7-8',
-                width: 1200,
-                height: 800
+                img: coverHairyWorm,
+                desc: "Portada"
             },
-
             {
-                img:'https://placehold.co/1200x800/222/FFF?text=Pagina+9-10',
-                width: 1200,
-                height: 800 
+                img: page01HairyWorm,
+                desc: "Página 1 - Introducción"
+            },
+            {
+                img: page02HairyWorm,
+                desc: "Página 14 - El grillo Millard"
+            },
+            {
+                img: doublePage01HairyWorm,
+                desc: "Páginas 9 y 10 - Bella, la mariposa"
             }
         ]
-    }
-]
+    },
+
+    {
+        id: "hairy-worm-book",
+        titulo: "A Very Hairy Worm & his Lost Rythm",
+        autor: "Emily Dungan",
+        year: "2024",
+
+        portada: coverHairyWorm,
+
+        paginas: [
+            {
+                img: coverHairyWorm,
+                desc: "Portada"
+            },
+            {
+                img: page01HairyWorm,
+                desc: "Página 1 - Introducción"
+            },
+            {
+                img: page02HairyWorm,
+                desc: "Página 14 - El grillo Millard"
+            },
+            {
+                img: doublePage01HairyWorm,
+                desc: "Páginas 9 y 10 - Bella, la mariposa"
+            }
+        ]
+    },
+
+    {
+        id: "hairy-worm-book",
+        titulo: "A Very Hairy Worm & his Lost Rythm",
+        autor: "Emily Dungan",
+        year: "2024",
+
+        portada: coverHairyWorm,
+
+        paginas: [
+            {
+                img: coverHairyWorm,
+                desc: "Portada"
+            },
+            {
+                img: page01HairyWorm,
+                desc: "Página 1 - Introducción"
+            },
+            {
+                img: page02HairyWorm,
+                desc: "Página 14 - El grillo Millard"
+            },
+            {
+                img: doublePage01HairyWorm,
+                desc: "Páginas 9 y 10 - Bella, la mariposa"
+            }
+        ]
+    },
+];
