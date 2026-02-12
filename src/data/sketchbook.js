@@ -1,8 +1,8 @@
-import bambiSkecth from '../assets/sketchbook/bambi-sketch.png';
-import florSketch from '../assets/sketchbook/flor-sketch.png';
-import loboSketch from '../assets/sketchbook/lobo-nube-sketch.png';
+import bambiSkecth from '../assets/sketchbook/bambi-sketch.PNG';
+import florSketch from '../assets/sketchbook/flor-sketch.PNG';
+import loboSketch from '../assets/sketchbook/lobo-nube-sketch.PNG';
 import loguitoSketch from '../assets/sketchbook/loguito-sketch.png';
-import osoSketch from '../assets/sketchbook/oso-tigre-sketch.png';
+import osoSketch from '../assets/sketchbook/oso-tigre-sketch.PNG';
 import piedraSketch from '../assets/sketchbook/piedritas-sketch.png';
 
 
