@@ -1,6 +1,13 @@
+---
+import { Image } from 'astro:assets';
+const {img} = Astro.props;
+---
+
 <div class="divider-container">
     <div class="linea"></div>
-    <img src="carita_logo.png" alt="Separador" class="icono" />
+    <div class="icon-wrapper">
+    <Image src={img} alt="Separador ilustrado" class="icono" />
+    </div>
     <div class="linea"></div>
 </div>
 
@@ -18,11 +25,21 @@
     flex: 1;
     height: 2px;
     border-radius: 2px;
-    background: linear-gradient(90deg,#43876e, #67b3ec, #f2e86d, #f56ed9)
+    background: linear-gradient(90deg, #43876e, #67b3ec, #f2e86d, #f56ed9)
 }
 
 .icono {
-    width: 50px;
-    heigth: auto;
+    width: 100px;
+    height: auto;
     object-fit: contain;
+}
+
+@media (max-width: 768px) {
+        .icono {
+            width: 70px;
+        }
+        .divider-container {
+            gap: 1rem;
+            margin: 3rem 0;
+        }
 }

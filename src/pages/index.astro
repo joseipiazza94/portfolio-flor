@@ -5,16 +5,27 @@ import Books from '../components/Books.astro';
 import Sketchbook from '../components/Sketchbook.astro';
 import About from '../components/About.astro';
 import Divider from '../components/Divider.astro';
+import Contact from '../components/Contact.astro';
+
+
+
+import faceNormal from '../assets/dividers/flop-normal.png';
+import faceAngry from '../assets/dividers/flop-angry.png';
+import faceSus from '../assets/dividers/flop-sus.png';
+import faceRelax from '../assets/dividers/flop-relax.png';
+
 ---
 
 <BaseLayout>
 	<Gallery />
-	<Divider />
+	<Divider img={faceNormal} />
 	<About />
-	<Divider />
+	<Divider img={faceRelax} />
 	<Books />
-	<Divider />
+	<Divider img={faceSus} />
 	<Sketchbook />
+	<Divider img={faceAngry} />
+	<Contact />
 </BaseLayout>
 
 <style>

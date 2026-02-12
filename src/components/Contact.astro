@@ -1,0 +1,184 @@
+---
+import { Image } from 'astro:assets';
+import contactImage from '../assets/dividers/flop-normal.png';
+const FORMSPREE_URL = "https://formspree.io/f/xqedpqpp"
+---
+
+<section id="contacto" class="contact-section">
+    <div class="container">
+    <h2 class="section-title">¡Trabajemos juntos!</h2>
+    <p class="contact-text">
+        ¿Tienes una idea en mente? Llena el formulario y te responderé lo antes posible!
+    </p>
+
+    <div class = "form-wrapper">
+
+        <form action={FORMSPREE_URL} method="POST" class="contact-form">
+
+            <div class="form-group">
+                <label for = "name">Nombre</label>
+                <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email"> Email </label>
+                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" rows="5" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+            </div>
+
+            <input type="text" name="_gotcha" style="display:none">
+
+            <button type="submit" class="submit-btn">Enviar Mensaje ✨</button>
+
+        </form>
+        
+        <div class="character-side">
+            <Image src={contactImage} alt="Personaje esperando mensaje" class="contact-char" />
+        </div>
+
+    </div>
+    </div>
+</section>
+
+<style>
+    .contact-section {
+        padding: 4rem 1rem 2rem;
+        background-color: #fff;
+        position: relative;
+    }
+
+    .section-title {
+        font-size: 2.5rem; 
+        text-align: center;
+        margin-bottom: 3rem;
+        color: #333;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        left: -10px;
+        bottom: 5px; 
+        width: calc(100% + 20px);
+        height: 15px;
+        background-color: #EB82BE;
+        opacity: 0.4; 
+        z-index: -1; 
+        transform: rotate(-1deg); 
+        border-radius: 20px 5px 20px 5px; 
+    }
+
+    .contact-text {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 3rem;
+    }
+
+    .form-wrapper {
+        display:flex;
+        justify-content: center;
+        align-items_ center;
+        gap: 4rem;
+        max-width: 900px;
+        margin: 0  auto;
+    }
+
+    .contact-form {
+        flex: 1;
+        background: #fdfdfd;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+        max-width: 500px;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weigth: bold;
+        color: #444;
+        font-size: 0.9rem;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 2px solid #eee;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #fafafa;
+    }
+
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: #eb82be;
+        background: white;
+        box-shadow: 0 0 0 4px rgba(235, 130, 190, 0.1);
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        background: #333;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        font-weight: bold;
+        transition: transform 0.2s, background 0.2s;
+    }
+
+    .submit-btn:hover {
+        background: #eb82be;
+        transform: translateY(-2px);
+    }
+
+    .character-side {
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        align-items: center;
+    }
+
+    .contact-char {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        
+        
+    }
+
+    @media (max-width: 1025px) {
+        .form-wrapper {
+            flex-direction: column-reverse;
+            gap: 2rem;
+        }
+
+        .contact-form {
+            width: 100%;
+            padding: 1.5rem;
+        }
+
+        .contact-char {
+            width: 120px;
+            margin-bottom: -20px;
+        }
+    }
+    </style>
