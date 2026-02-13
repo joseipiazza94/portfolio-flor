@@ -2,31 +2,48 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../global.css';
+const { pageTitle = "Flor Piazza | Ilustradora de Cuentos Infantiles" } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/manifest.json" />
+    	<meta name="theme-color" content="#EB82BE" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		
+		<meta name="description" content="Flop - Portfolio de Florencia Piazza. Ilustración de Cuentos Infantiles"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:url" content="https://portfolio-flor.vercel.app/"/>
+		<meta property="og:title" content="Florencia Piazza - Ilustración de Cuentos Infantiles"/>
+		<meta property="og:description" content="Mira mis últimos trabajos en ilustración para cuentos infantiles!"/>
+		<meta property="og:image" content="/share-img.png"/>
+		<meta property="twitter:title" content="Florencia Piazza - Ilustración de Cuentos Infantiles"/>
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:description" content="Mira mis últimos trabajos en Ilustración de Cuentos Infantiles!"/>
+		<meta property="twitter:image" content="/share-img.png"/>
+
+		<title>{pageTitle}</title>
 		
 	</head>
 	<body>
 	    
         	<Header />
-		<div class="wrapper">
+		<main class="wrapper">
 			<slot />
-		</div>
+		</main>
         	<Footer />
 
 <!-- SCRIPT PARA COLOREAR ENLACES DE FORMA ALEATORIA -->
 
 	<script>
 	const logoColors = ["#43876f", "#67b4ec", "#d4c000", "#f26bd6"];
-	const allLinks = document.querySelectorAll("a");
+	const allLinks = document.querySelectorAll(".nav-link");
 
 	allLinks.forEach(link => {
 		link.addEventListener("mouseenter", () => {
