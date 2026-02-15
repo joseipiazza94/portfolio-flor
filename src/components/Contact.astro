@@ -30,7 +30,13 @@ const FORMSPREE_URL = "https://formspree.io/f/xqedpqpp"
                 <textarea id="message" name="message" rows="5" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
             </div>
 
-            <input type="text" name="_gotcha" style="display:none">
+            <input 
+                type="text" 
+                name="_gotcha" 
+                style="display:none" 
+                tabindex="-1" 
+                autocomplete="off" 
+            />
 
             <button type="submit" class="submit-btn">Enviar Mensaje ✨</button>
 
@@ -87,7 +93,7 @@ const FORMSPREE_URL = "https://formspree.io/f/xqedpqpp"
     .form-wrapper {
         display:flex;
         justify-content: center;
-        align-items_ center;
+        align-items: center;
         gap: 4rem;
         max-width: 900px;
         margin: 0  auto;
@@ -110,7 +116,7 @@ const FORMSPREE_URL = "https://formspree.io/f/xqedpqpp"
     label {
         display: block;
         margin-bottom: 0.5rem;
-        font-weigth: bold;
+        font-weight: bold;
         color: #444;
         font-size: 0.9rem;
     }

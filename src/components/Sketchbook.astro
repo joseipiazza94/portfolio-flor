@@ -1,6 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import { sketches } from '../data/sketchbook.js'
+
+import 'photoswipe/style.css';
+import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
 ---
 
 <section id="sketch-gallery" class="sketch-gallery">
@@ -14,6 +17,8 @@ import { sketches } from '../data/sketchbook.js'
                 data-pswp-height={sketch.imagen.height}
                 data-pswp-caption-content={`<strong>${sketch.desc}</strong>`}
                 target="_blank"
+                rel="noopener noreferrer" 
+                aria-label={`Ver sketch: ${sketch.desc}`}
             >
                     <Image
                         src={sketch.imagen}
@@ -87,10 +92,9 @@ import { sketches } from '../data/sketchbook.js'
 
 <script>
     import PhotoSwipeLightbox from 'photoswipe/lightbox';
-    import 'photoswipe/style.css';
-
+    
     import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
-    import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
+    
 
     const lightbox = new PhotoSwipeLightbox ({
         gallery: '.sketchbook-wall',

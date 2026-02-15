@@ -2,14 +2,14 @@
 /* About Astro */
 ---
 
-<section id="sobre mi" class="about-section">
+<section id="sobre-mi" class="about-section">
     <div class="container">
 
         <div class="col-foto">
             <div class="cuadrado-deco">
             </div>
 
-            <img src="/profile.png" alt="Foto de Flor" />
+            <img src="/profile.png" alt="Foto de Flor" class="profile-pic" />
         </div>
 
         <div class="col-texto">
@@ -69,23 +69,16 @@
 }
 
 
-.col-foto img {
-  /* 1. Control de tamaño */
-  width: 100%;       /* Ocupa el ancho disponible de su columna */
-  max-width: 380px;  /* Pero nunca más de 380px (para que no sea enorme) */
-  height: auto;      /* Mantiene la proporción */
-  display: block;    /* Evita espacios raros abajo */
-  margin: 0 auto;    /* Centrada si sobra espacio */
-
-  /* 2. EL ESTILO POP (La prueba de fuego) */
-  border: 3px solid #1a1a1a;  /* Marco negro tipo dibujo */
-  
-  /* Sombra sólida desplazada (Color ROSA del logo: #EB82BE) */
-  box-shadow: 10px 10px 0px #EB82BE; 
-
-  /* 3. Un poco de suavidad para el futuro hover */
-  transition: all 0.3s ease;
-}
+.profile-pic {
+        width: 100%;
+        max-width: 380px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border: 3px solid #1a1a1a;
+        box-shadow: 10px 10px 0px #EB82BE; 
+        transition: all 0.3s ease;
+    }
 
 
 

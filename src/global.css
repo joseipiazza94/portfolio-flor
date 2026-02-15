@@ -1,31 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap');
+
 
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 h1, h2, h3 {
-    font-family: 'Raleway', cursive;
+    font-family: 'Raleway', sans-serif;
     color: #2d3436;
     letter-spacing: -0.5px;
 }
 
-body {
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
     font-family: 'Raleway', sans-serif;
     line-height: 1.6;
     font-weight: 300;
     color: #4a4a4a;
+    background-color: #f4f4f5;
+    
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    overflow-x: hidden;
 }
 
 img, svg, video {
@@ -33,24 +34,11 @@ img, svg, video {
     height: auto;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f5;
-    color: #18181b;
-}
-
 /* SELECCIÓN DE TEXTO CON COLORES DEL LOGO */
 ::selection {
     background-color: #f2e86b;
     color: #1a1a1a;
 }
-
-::moz-selection {
-    background-color: #f2e86b;
-    color: #1a1a1a;
-}
-
 
 /* BARRA DE SCROLL PERSONALIZADA ---> Firefox 1 color, otros navegadores arcoiris*/
 
@@ -86,4 +74,10 @@ html, body {
         scrollbar-width: thin;
         scrollbar-color: #68b4ed #f0f0f0;
     }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }

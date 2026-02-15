@@ -7,7 +7,7 @@ import 'photoswipe/style.css';
 <section class="carousel-section" id="libros">
     <h2 class="section-title">Libros que ilustré</h2>
     <div class="carousel-stage">
-        <button id="prev" class="nav-btn">❮</button>
+        <button id="prev" class="nav-btn" aria-label="Libro anterior">❮</button>
 
         <div class="carousel-track">
             {books.map((book, index) => (
@@ -37,7 +37,7 @@ import 'photoswipe/style.css';
             ))}
         </div>
 
-        <button id="next" class="nav-btn">❯</button>
+        <button id="next" class="nav-btn" aria-label="Siguiente libro">❯</button>
     
     </div>
 </section>
@@ -219,10 +219,13 @@ import 'photoswipe/style.css';
     import PhotoSwipeLightbox from 'photoswipe/lightbox';
 
     const track = document.querySelector('.carousel-track');
-    const cards = document.querySelectorAll('.book-card');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
 
+    if (track) {
+
+        const cards = document.querySelectorAll('.book-card');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+    
     // Empezamos en el medio
     let currentIndex = Math.floor(cards.length / 2);
     
@@ -265,6 +268,7 @@ import 'photoswipe/style.css';
             }
         });
     }
+    
 
     // --- EVENTOS ---
     nextBtn.addEventListener('click', () => {
@@ -314,5 +318,6 @@ import 'photoswipe/style.css';
     window.addEventListener('load', updateCarousel);
     // Y un timeout de respaldo por si acaso
     setTimeout(updateCarousel, 100);
+}
 
 </script>
