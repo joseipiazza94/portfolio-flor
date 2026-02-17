@@ -1,24 +1,23 @@
 ---
-/* About Astro */
+import { ui } from '../i18n/ui';
+
+const lang = Astro.currentLocale || 'es';
+const t = ui[lang];
 ---
 
 <section id="sobre-mi" class="about-section">
     <div class="container">
 
         <div class="col-foto">
-            <div class="cuadrado-deco">
-            </div>
+           
 
-            <img src="/profile.png" alt="Foto de Flor" class="profile-pic" />
+            <img src="/profile.jpg" alt="Foto de Flor" class="profile-pic" />
         </div>
 
         <div class="col-texto">
-            <h2 class="section-title">Hola, soy <span class="texto-color">Flor</span></h2>
+            <h2 class="section-title">{t['about.title']}</h2>
             <p>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                {t['about.text']}
             </p>      
         </div>
     </div>
@@ -60,6 +59,24 @@
         border-radius: 20px 5px 20px 5px; 
     }
 
+    .col-texto p{
+        font-size: 1.15rem;
+        line-height:1.7;
+        font-weight: 450;
+        color: #666;
+    }
+
+   .profile-pic {
+        width: 100%;
+        max-width: 650px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border: 3px solid #1a1a1a;
+        box-shadow: 10px 10px 0px #EB82BE; 
+        transition: all 0.3s ease;
+    }
+
 @media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;
@@ -69,16 +86,7 @@
 }
 
 
-.profile-pic {
-        width: 100%;
-        max-width: 380px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-        border: 3px solid #1a1a1a;
-        box-shadow: 10px 10px 0px #EB82BE; 
-        transition: all 0.3s ease;
-    }
+
 
 
 

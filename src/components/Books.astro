@@ -2,10 +2,14 @@
 import { Image } from 'astro:assets';
 import { books } from '../data/books.js';
 import 'photoswipe/style.css';
+
+import { ui } from '../i18n/ui';
+const lang = Astro.currentLocale || 'es';
+const t = ui[lang];
 ---
 
 <section class="carousel-section" id="libros">
-    <h2 class="section-title">Libros que ilustré</h2>
+    <h2 class="section-title">{t['section.books']}</h2>
     <div class="carousel-stage">
         <button id="prev" class="nav-btn" aria-label="Libro anterior">❮</button>
 

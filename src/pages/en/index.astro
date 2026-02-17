@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Gallery from '../../components/Gallery.astro';
+import Books from '../../components/Books.astro';
+import Sketchbook from '../../components/Sketchbook.astro';
+import About from '../../components/About.astro';
+import Divider from '../../components/Divider.astro';
+import Contact from '../../components/Contact.astro';
+
+
+
+import faceNormal from '../../assets/dividers/flop-normal.png';
+import faceAngry from '../../assets/dividers/flop-angry.png';
+import faceSus from '../../assets/dividers/flop-sus.png';
+import faceRelax from '../../assets/dividers/flop-relax.png';
+
+---
+
+<BaseLayout pageTitle="Inicio | Flor Piazza - Portfolio">
+	<Gallery />
+	<Divider img={faceNormal} />
+	<About />
+	<Divider img={faceRelax} />
+	<Books />
+	<Divider img={faceSus} />
+	<Sketchbook />
+	<Divider img={faceAngry} />
+	<Contact />
+</BaseLayout>
+
+
