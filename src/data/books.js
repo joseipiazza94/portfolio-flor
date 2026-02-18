@@ -24,10 +24,10 @@ export const books = [
         cover: coverHairyWorm,
 
         gallery: [
-            {src: coverHairyWorm, alt: "Portada del libro" },
-            {src: page1HairyWorm, alt: "Pagina 1 - Presentacion"},
-            {src: page2HairyWorm, alt: "Pagina 14 - El Grillo Millard"},
-            {src: page3HairyWorm, alt: "Paginas 9 y 10 - Bella, la Mariposa"}
+            {src: coverHairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
+            {src: page1HairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
+            {src: page2HairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
+            {src: page3HairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
         ]
     },
 
@@ -38,10 +38,10 @@ export const books = [
         cover: coverChipitoParis,
 
         gallery: [
-            {src: coverChipitoParis, alt: "Portada del libro" },
-            {src: page1ChipitoParis, alt: "Pagina 1 - Presentacion"},
-            {src: page2ChipitoParis, alt: "Pagina 14 - El Grillo Millard"},
-            {src: page3ChipitoParis, alt: "Paginas 9 y 10 - Bella, la Mariposa"}
+            {src: coverHairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
+            {src: page1HairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
+            {src: page2HairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
+            {src: page3HairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
         ]
     },
 
@@ -52,10 +52,10 @@ export const books = [
         cover: coverAshtonTortuga,
 
         gallery: [
-            {src: coverAshtonTortuga, alt: "Portada del libro" },
-            {src: page1AshtonTortuga, alt: "Pagina 2 - Casamiento"},
-            {src: page2AshtonTortuga, alt: "Pagina 14 - Flamingo Gardens"},
-            {src: page3AshtonTortuga, alt: "Paginas 9 y 10 - Pool Time"}
+            {src: coverHairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
+            {src: page1HairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
+            {src: page2HairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
+            {src: page3HairyWorm, alt: { es: "Portada del libro", en: "Book cover"}},
         ]
     }
 ]

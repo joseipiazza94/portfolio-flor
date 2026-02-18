@@ -1,9 +1,13 @@
 ---
 import { Image } from 'astro:assets';
 import { sketches } from '../data/sketchbook.js'
+import { ui } from '../i18n/ui';
 
 import 'photoswipe/style.css';
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
+
+const lang = Astro.currentLocale || 'es';
+const t = ui[lang];
 ---
 
 <section id="sketch-gallery" class="sketch-gallery">
@@ -15,14 +19,14 @@ import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
                 href={sketch.imagen.src}
                 data-pswp-width={sketch.imagen.width}
                 data-pswp-height={sketch.imagen.height}
-                data-pswp-caption-content={`<strong>${sketch.desc}</strong>`}
+                data-pswp-caption-content={`<strong>${sketch.alt[lang]}</strong>`}
                 target="_blank"
                 rel="noopener noreferrer" 
-                aria-label={`Ver sketch: ${sketch.desc}`}
+                aria-label={`Ver sketch: ${sketch.alt[lang]}`}
             >
                     <Image
                         src={sketch.imagen}
-                        alt={sketch.alt}
+                        alt={sketch.alt[lang]}
                         width={600}
                         class="img-fluid"
                         

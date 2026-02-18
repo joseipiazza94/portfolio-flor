@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { books } from '../data/books.js';
 import 'photoswipe/style.css';
+import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
 
 import { ui } from '../i18n/ui';
 const lang = Astro.currentLocale || 'es';
@@ -32,7 +33,9 @@ const t = ui[lang];
                             href={img.src.src}
                             data-pswp-width={img.src.width}
                             data-pswp-height={img.src.height}
+                            data-pswp-caption-content={img.alt[lang]}
                             target="_blank"
+                            
                         ></a>
                     ))}
                     </div>
@@ -221,6 +224,8 @@ const t = ui[lang];
 
 <script>
     import PhotoSwipeLightbox from 'photoswipe/lightbox';
+    // 👇 1. IMPORTAMOS EL PLUGIN (Nueva línea)
+    import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
 
     const track = document.querySelector('.carousel-track');
 
@@ -234,19 +239,15 @@ const t = ui[lang];
     let currentIndex = Math.floor(cards.length / 2);
     
     function updateCarousel() {
-        // 1. OBTENER EL ESCENARIO Y SU CENTRO
+        // (MANTUVE TU LÓGICA DE CARRUSEL EXACTAMENTE IGUAL)
         const stage = document.querySelector('.carousel-stage');
         const stageCenter = stage.offsetWidth / 2;
         
-        // 2. LEER LAS MEDIDAS REALES DEL DOM (La clave del éxito)
-        // Leemos el ancho de la primera carta (es el ancho base para todas)
         const cardWidth = cards[0].offsetWidth;
         
-        // Leemos el 'gap' directamente del CSS computado (si falla, asumimos 0)
         const trackStyle = window.getComputedStyle(track);
         const gap = parseFloat(trackStyle.gap) || 0;
         
-        // Leemos si hay algún padding lateral en el track que debamos considerar
         const trackPaddingLeft = parseFloat(trackStyle.paddingLeft) || 0;
 
         cards.forEach((card, index) => {
@@ -255,17 +256,8 @@ const t = ui[lang];
             if (index === currentIndex) {
                 card.classList.add('active');
                 
-                // 3. FÓRMULA DE CENTRADO EXACTO
-                // Distancia desde el inicio del track hasta el borde izquierdo de ESTA carta
-                // (Ancho + Espacio) * Cantidad de cartas anteriores
                 const distanceToCard = index * (cardWidth + gap);
-                
-                // Posición del centro de la carta (respecto al track)
-                // Es la distancia + el padding inicial del track + la mitad de la carta
                 const cardCenterInTrack = distanceToCard + trackPaddingLeft + (cardWidth / 2);
-
-                // 4. EL MOVIMIENTO FINAL
-                // Queremos que 'cardCenterInTrack' coincida con 'stageCenter'
                 const moveX = stageCenter - cardCenterInTrack;
 
                 track.style.transform = `translateX(${moveX}px)`;
@@ -287,13 +279,11 @@ const t = ui[lang];
         updateCarousel();
     });
 
-    // Evento Resize optimizado
     window.addEventListener('resize', () => {
-        // Ejecutamos inmediatamente para feedback rápido
         updateCarousel(); 
     });
 
-    // --- PHOTOSWIPE ---
+    // --- PHOTOSWIPE (Aquí agregamos el plugin) ---
     cards.forEach((card, index) => {
         const galleryElement = card.querySelector('.hidden-gallery');
         if (galleryElement) {
@@ -303,6 +293,16 @@ const t = ui[lang];
                 pswpModule: () => import('photoswipe'),
                 paddingFn: () => ({ top: 0, bottom: 30, left: 0, right: 0 }),
             });
+
+            // 👇 2. ACTIVAMOS LOS CAPTIONS (Bloque nuevo)
+            // Esto leerá el atributo data-pswp-caption-content que pusimos en el HTML
+            new PhotoSwipeDynamicCaption(lightbox, {
+                type: 'auto',
+                captionContent: (slide) => {
+                    return slide.data.element.getAttribute('data-pswp-caption-content');
+                }
+            });
+
             lightbox.init();
 
             card.addEventListener('click', () => {
@@ -317,11 +317,9 @@ const t = ui[lang];
         }
     });
 
-    // Arrancar
-    // Usamos 'load' para asegurar que las imágenes cargaron y tienen ancho real
     window.addEventListener('load', updateCarousel);
-    // Y un timeout de respaldo por si acaso
     setTimeout(updateCarousel, 100);
 }
+</script>
 
 </script>

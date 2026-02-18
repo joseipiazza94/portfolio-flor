@@ -19,14 +19,14 @@ const t = ui[lang];
                 href={obra.imagen.src}
                 data-pswp-width={obra.imagen.width}
                 data-pswp-height={obra.imagen.height}
-                data-pswp-caption-content={`<strong>${obra.meta.title}</strong> (${obra.meta.year})<br>${obra.meta.technique} - ${obra.meta.client}`}
+                data-pswp-caption-content={`<strong>${obra.meta.title}</strong> (${obra.meta.year})<br>${obra.meta.technique[lang]} - ${obra.meta.client[lang]}`}
                 target="_blank"
-                rel="noopener nonreferrer"
+                rel="noopener noreferrer"
                 aria-label={`Ver ampliación de ${obra.meta.title}`}
             >
                     <Image
                         src={obra.imagen}
-                        alt={obra.alt}
+                        alt={obra.alt[lang]}
                         width={600}
                         class="img-fluid"
                         
