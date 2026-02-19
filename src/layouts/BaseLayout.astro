@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FloatingFiverr from '../components/FloatingFiverr.astro';
 import '../global.css';
 const lang = Astro.currentLocale || 'es';
 const { pageTitle = "Flor Piazza | Ilustradora de Cuentos Infantiles" } = Astro.props;
@@ -43,6 +44,7 @@ const { pageTitle = "Flor Piazza | Ilustradora de Cuentos Infantiles" } = Astro.
 			<slot />
 		</main>
         	<Footer />
+			<FloatingFiverr />
 
 <!-- SCRIPT PARA COLOREAR ENLACES DE FORMA ALEATORIA -->
 

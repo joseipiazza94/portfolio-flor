@@ -20,6 +20,7 @@ export const ui = {
         'section.works': 'Mis Trabajos',
         'section.books': 'Libros que ilustré',
         'section.sketchbook': 'Sketchbook',
+        'fiverr.floating': '¿Te gusta mi trabajo? ¡Contrátame en Fiverr!',
     },
 
     en: {
@@ -43,5 +44,6 @@ export const ui = {
         'section.works': 'My Work',
         'section.books': 'Illustrated Books',
         'section.sketchbook': 'Sketchbook',
+        'fiverr.floating': 'Like my work? Hire me on Fiverr!',
     },
 } as const;
