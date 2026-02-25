@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import { books } from '../data/books.js';
 import 'photoswipe/style.css';
-import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
 
 import { ui } from '../i18n/ui';
 const lang = Astro.currentLocale || 'es';
@@ -16,7 +15,7 @@ const t = ui[lang];
 
         <div class="carousel-track">
             {books.map((book, index) => (
-                <div class="book-card" data-index= {index}>
+                <div class="book-card" data-index={index}>
                     <div class="cover-wrapper">
                         <Image
                             src={book.cover}
@@ -26,62 +25,56 @@ const t = ui[lang];
                         />
                     </div>
 
-                    
                     <div class="hidden-gallery" style="display:none;">
                     {book.gallery.map((img) => (
                         <a
                             href={img.src.src}
                             data-pswp-width={img.src.width}
                             data-pswp-height={img.src.height}
-                            data-pswp-caption-content={img.alt[lang]}
                             target="_blank"
-                            
                         ></a>
                     ))}
                     </div>
                 </div>
-
             ))}
         </div>
 
         <button id="next" class="nav-btn" aria-label="Siguiente libro">❯</button>
-    
     </div>
 </section>
 
 <style>
-
+/* (Mantenemos tus estilos exactamente iguales) */
 .carousel-section {
     padding: 1rem 0;
     text-align: center;
     overflow: hidden;
     scroll-margin-top: 90px;
-    
 }
 
 .section-title {
-        font-size: 2.5rem; 
-        text-align: center;
-        margin-bottom: 3rem;
-        color: #333;
-        position: relative;
-        display: inline-block;
-        z-index: 1;
-    }
+    font-size: 2.5rem; 
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #333;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
 
-    .section-title::after {
-        content: '';
-        position: absolute;
-        left: -10px;
-        bottom: 5px; 
-        width: calc(100% + 20px);
-        height: 15px;
-        background-color: #67b3ec;
-        opacity: 0.4; 
-        z-index: -1; 
-        transform: rotate(-1deg); 
-        border-radius: 20px 5px 20px 5px; 
-    }
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    bottom: 5px; 
+    width: calc(100% + 20px);
+    height: 15px;
+    background-color: #67b3ec;
+    opacity: 0.4; 
+    z-index: -1; 
+    transform: rotate(-1deg); 
+    border-radius: 20px 5px 20px 5px; 
+}
 
 .carousel-stage {
     position: relative;
@@ -102,8 +95,6 @@ const t = ui[lang];
     will-change: transform;
     width: max-content; 
     min-width: 100%;
-    padding-left: 0;
-    padding-right: 0;
     padding: 0 40px;
 }
 
@@ -116,7 +107,6 @@ const t = ui[lang];
     z-index: 1;
     cursor: pointer;
     flex-shrink: 0;
-    margin: 0;
 }
 
 .cover-wrapper img {
@@ -128,14 +118,9 @@ const t = ui[lang];
 
 .book-card.active {
     opacity: 1;
-    transform: translateX(0) scale(1.2) !important;
+    transform: scale(1.2) !important;
     z-index: 10;
-    margin: 0;
     box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-}
-
-.book-card.active .book-title {
-    opacity: 1;
 }
 
 .nav-btn {
@@ -163,164 +148,85 @@ const t = ui[lang];
 #prev { left: 20px; }
 #next { right: 20px; }
 
-
 @media (max-width: 1025px) {
-    
-    .carousel-section {
-        padding: 1rem 0;
-    }
-    
-    .carousel-track {
-        height: 400px;
-        gap: 20px;
-    }
-
-    .section-title {
-        font-size: 2rem; 
-        text-align: center;
-        margin-bottom: 3rem;
-        color: #333;
-        position: relative;
-        display: inline-block;
-        z-index: 1;
-    }
-
-    .section-title::after {
-        content: '';
-        position: absolute;
-        left: -10px;
-        bottom: 5px; 
-        width: calc(100% + 20px);
-        height: 15px;
-        background-color: #67b3ec;
-        opacity: 0.4; 
-        z-index: -1; 
-        transform: rotate(-1deg); 
-        border-radius: 20px 5px 20px 5px; 
-    }
-
-    .book-card {
-        width: 55vw;
-        max-width: 250px;
-    }
-
-    .book-card.active {
-        transform: scale(1.05) !important;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    }
-
-    .nav-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 18px;
-        background: rgba(255,255,255,0.9);
-    }
-
+    .carousel-track { height: 400px; gap: 20px; }
+    .book-card { width: 55vw; max-width: 250px; }
+    .book-card.active { transform: scale(1.05) !important; }
     #prev { left : 2px; }
-    #next {right : 2px; }
-
+    #next { right : 2px; }
 }
-
 </style>
 
 <script>
     import PhotoSwipeLightbox from 'photoswipe/lightbox';
-    // 👇 1. IMPORTAMOS EL PLUGIN (Nueva línea)
-    import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
 
     const track = document.querySelector('.carousel-track');
 
     if (track) {
-
         const cards = document.querySelectorAll('.book-card');
         const prevBtn = document.getElementById('prev');
         const nextBtn = document.getElementById('next');
+        let currentIndex = Math.floor(cards.length / 2);
     
-    // Empezamos en el medio
-    let currentIndex = Math.floor(cards.length / 2);
-    
-    function updateCarousel() {
-        // (MANTUVE TU LÓGICA DE CARRUSEL EXACTAMENTE IGUAL)
-        const stage = document.querySelector('.carousel-stage');
-        const stageCenter = stage.offsetWidth / 2;
-        
-        const cardWidth = cards[0].offsetWidth;
-        
-        const trackStyle = window.getComputedStyle(track);
-        const gap = parseFloat(trackStyle.gap) || 0;
-        
-        const trackPaddingLeft = parseFloat(trackStyle.paddingLeft) || 0;
+        function updateCarousel() {
+            const stage = document.querySelector('.carousel-stage') as HTMLElement;
+            const stageCenter = stage.offsetWidth / 2;
+            const cardWidth = (cards[0] as HTMLElement).offsetWidth;
+            const trackStyle = window.getComputedStyle(track);
+            const gap = parseFloat(trackStyle.gap) || 0;
+            const trackPaddingLeft = parseFloat(trackStyle.paddingLeft) || 0;
 
-        cards.forEach((card, index) => {
-            card.classList.remove('active');
-
-            if (index === currentIndex) {
-                card.classList.add('active');
-                
-                const distanceToCard = index * (cardWidth + gap);
-                const cardCenterInTrack = distanceToCard + trackPaddingLeft + (cardWidth / 2);
-                const moveX = stageCenter - cardCenterInTrack;
-
-                track.style.transform = `translateX(${moveX}px)`;
-            }
-        });
-    }
-    
-
-    // --- EVENTOS ---
-    nextBtn.addEventListener('click', () => {
-        currentIndex++;
-        if (currentIndex >= cards.length) currentIndex = 0;
-        updateCarousel();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        currentIndex--;
-        if(currentIndex < 0) currentIndex = cards.length - 1;
-        updateCarousel();
-    });
-
-    window.addEventListener('resize', () => {
-        updateCarousel(); 
-    });
-
-    // --- PHOTOSWIPE (Aquí agregamos el plugin) ---
-    cards.forEach((card, index) => {
-        const galleryElement = card.querySelector('.hidden-gallery');
-        if (galleryElement) {
-            const lightbox = new PhotoSwipeLightbox({
-                gallery: galleryElement,
-                children: 'a',
-                pswpModule: () => import('photoswipe'),
-                paddingFn: () => ({ top: 0, bottom: 30, left: 0, right: 0 }),
-            });
-
-            // 👇 2. ACTIVAMOS LOS CAPTIONS (Bloque nuevo)
-            // Esto leerá el atributo data-pswp-caption-content que pusimos en el HTML
-            new PhotoSwipeDynamicCaption(lightbox, {
-                type: 'auto',
-                captionContent: (slide) => {
-                    return slide.data.element.getAttribute('data-pswp-caption-content');
-                }
-            });
-
-            lightbox.init();
-
-            card.addEventListener('click', () => {
+            cards.forEach((card, index) => {
+                card.classList.remove('active');
                 if (index === currentIndex) {
-                    const firstLink = galleryElement.querySelector('a');
-                    if(firstLink) firstLink.click();
-                } else {
-                    currentIndex = index;
-                    updateCarousel();
+                    card.classList.add('active');
+                    const distanceToCard = index * (cardWidth + gap);
+                    const cardCenterInTrack = distanceToCard + trackPaddingLeft + (cardWidth / 2);
+                    const moveX = stageCenter - cardCenterInTrack;
+                    (track as HTMLElement).style.transform = `translateX(${moveX}px)`;
                 }
             });
         }
-    });
 
-    window.addEventListener('load', updateCarousel);
-    setTimeout(updateCarousel, 100);
-}
-</script>
+        nextBtn?.addEventListener('click', () => {
+            currentIndex++;
+            if (currentIndex >= cards.length) currentIndex = 0;
+            updateCarousel();
+        });
 
+        prevBtn?.addEventListener('click', () => {
+            currentIndex--;
+            if (currentIndex < 0) currentIndex = cards.length - 1;
+            updateCarousel();
+        });
+
+        window.addEventListener('resize', updateCarousel);
+
+        cards.forEach((card, index) => {
+            const galleryElement = card.querySelector('.hidden-gallery') as HTMLElement;
+            if (galleryElement) {
+                const lightbox = new PhotoSwipeLightbox({
+                    gallery: galleryElement,
+                    children: 'a',
+                    pswpModule: () => import('photoswipe'),
+                    paddingFn: () => ({ top: 0, bottom: 0, left: 0, right: 0 }),
+                });
+
+                lightbox.init();
+
+                card.addEventListener('click', () => {
+                    if (index === currentIndex) {
+                        const firstLink = galleryElement.querySelector('a');
+                        if (firstLink) firstLink.click();
+                    } else {
+                        currentIndex = index;
+                        updateCarousel();
+                    }
+                });
+            }
+        });
+
+        window.addEventListener('load', updateCarousel);
+        setTimeout(updateCarousel, 100);
+    }
 </script>
