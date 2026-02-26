@@ -235,20 +235,31 @@
 
 
 <script>
-    const btnCopiar = document.getElementById('copy-email-btn');
-    btnCopiar.addEventListener('click', async() => {
-        const email = btnCopiar.getAttribute('data-email');
-        try {
-            await navigator.clipboard.writeText(email);
-            const textoOriginal = btnCopiar.innerText;
-            btnCopiar.innerText= '¡Email copiado! ✓';
-            setTimeout(() => {
-                btnCopiar.innerText = textoOriginal;
-            }, 2000);
-        } catch (err) {
-            console.error('Error al copiar el texto: ', err);
-            btnCopiar.innerText = 'Error al copiar';
-        }
-    });
+   
+    const btnCopiar = document.getElementById('copy-email-btn') as HTMLButtonElement | null;
+
+    
+    if (btnCopiar) {
+        btnCopiar.addEventListener('click', async () => {
+            
+            const email = btnCopiar.getAttribute('data-email') ?? '';
+            
+            try {
+                await navigator.clipboard.writeText(email);
+                
+                const textoOriginal = btnCopiar.innerText;
+                btnCopiar.innerText = '¡Email copiado! ✓';
+                
+                setTimeout(() => {
+                    
+                    if (btnCopiar) btnCopiar.innerText = textoOriginal;
+                }, 2000);
+                
+            } catch (err) {
+                console.error('Error al copiar el texto: ', err);
+                btnCopiar.innerText = 'Error al copiar';
+            }
+        });
+    }
 </script>
 </html>

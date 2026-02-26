@@ -7,7 +7,7 @@ import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
 
 import { ui } from '../i18n/ui';
 const lang = Astro.currentLocale || 'es';
-const t = ui[lang];
+const t = ui[lang as keyof typeof ui];
 ---
 
 <section id="galeria" class="gallery-section">
@@ -19,17 +19,16 @@ const t = ui[lang];
                 href={obra.imagen.src}
                 data-pswp-width={obra.imagen.width}
                 data-pswp-height={obra.imagen.height}
-                data-pswp-caption-content={`<strong>${obra.meta.title}</strong> (${obra.meta.year})<br>${obra.meta.technique[lang]} - ${obra.meta.client[lang]}`}
+                data-pswp-caption-content={`<strong>${obra.meta.title}</strong> (${obra.meta.year})<br>${obra.meta.technique[lang as keyof typeof obra.meta.technique]} - ${obra.meta.client[lang as keyof typeof obra.meta.client]}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Ver ampliación de ${obra.meta.title}`}
             >
                     <Image
                         src={obra.imagen}
-                        alt={obra.alt[lang]}
+                        alt={obra.alt[lang as keyof typeof obra.alt]}
                         width={600}
                         class="img-fluid"
-                        
                     />
             </a>
         </div>
@@ -111,7 +110,7 @@ const t = ui[lang];
     
     const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
         type:'auto',
-        captionContent: (slide) => {
+        captionContent: (slide: any) => {
         return slide.data.element.getAttribute('data-pswp-caption-content');
     }
     });

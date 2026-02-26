@@ -1,10 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ui } from '../i18n/ui';
+
+// Intentamos obtener el locale, si no, miramos la URL, y si no, español por defecto.
+const currentUrl = Astro.url.pathname;
+const isEnglish = currentUrl.startsWith('/en/');
+const lang = isEnglish ? 'en' : (Astro.currentLocale || 'es');
+
+const t = ui[lang as keyof typeof ui];
 ---
-<BaseLayout pageTitle="¡Ups! Página no encontrada">
+
+<BaseLayout pageTitle={t['404.title']}>
   <div style="text-align: center; padding: 5rem 1rem;">
-    <h1 style="font-size: 3rem;">¡Oops! 404</h1>
-    <p>Parece que te perdiste en el bosque de los bocetos.</p>
-    <a href="/" style="color: #EB82BE; font-weight: bold;">Volver al inicio</a>
+    <h1 style="font-size: 3rem;">{t['404.oops']}</h1>
+    <p>{t['404.message']}</p>
+    
+    <a 
+      href={`/${lang}/`} 
+      style="color: #EB82BE; font-weight: bold; text-decoration: none;"
+    >
+      {t['404.back']}
+    </a>
   </div>
 </BaseLayout>

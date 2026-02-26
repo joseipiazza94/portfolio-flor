@@ -48,25 +48,36 @@ const { pageTitle = "Flor Piazza | Ilustradora de Cuentos Infantiles" } = Astro.
 
 <!-- SCRIPT PARA COLOREAR ENLACES DE FORMA ALEATORIA -->
 
-	<script>
-	const logoColors = ["#43876f", "#67b4ec", "#d4c000", "#f26bd6"];
-	const allLinks = document.querySelectorAll(".nav-link");
+<script>
+    const logoColors = ["#43876f", "#67b4ec", "#d4c000", "#f26bd6"];
+    
+    // Agregamos el casting "as NodeListOf<HTMLElement>"
+    const allLinks = document.querySelectorAll(".nav-link, .nav-social") as NodeListOf<HTMLElement>;
 
-	allLinks.forEach(link => {
-		link.addEventListener("mouseenter", () => {
-			const randomIndex = Math.floor(Math.random()*logoColors.length);
-		link.style.color = logoColors[randomIndex];
-		link.style.transition = "color 0.3s ease";
-		});
+    allLinks.forEach(link => {
+        link.addEventListener("mouseenter", () => {
+            const randomIndex = Math.floor(Math.random() * logoColors.length);
+            
+            // Ahora TypeScript sabe que link tiene la propiedad .style
+            link.style.color = logoColors[randomIndex];
+            link.style.transition = "color 0.3s ease";
 
-		link.addEventListener("mouseleave", () => {
-			link.style.color = "";	
-		})
-	});
-	</script>
+            // TIP ADICIONAL: Si querés que el color también afecte al SVG de Instagram/Fiverr
+            const svg = link.querySelector('svg');
+            if (svg) {
+                svg.style.stroke = logoColors[randomIndex];
+                svg.style.transition = "stroke 0.3s ease";
+            }
+        });
 
-	</body>
-</html>
+        link.addEventListener("mouseleave", () => {
+            link.style.color = "";
+            
+            const svg = link.querySelector('svg');
+            if (svg) svg.style.stroke = "";
+        });
+    });
+</script>
 
 <style>
 	.wrapper {

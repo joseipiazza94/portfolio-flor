@@ -2,7 +2,7 @@
 import { ui } from '../i18n/ui';
 
 const lang = Astro.currentLocale || 'es';
-const t = ui[lang];
+const t = ui[lang as keyof typeof ui];
 
 const esClass = lang === 'es' ? 'lang-active' : 'lang-inactive';
 const enClass = lang === 'en' ? 'lang-active' : 'lang-inactive';
@@ -40,7 +40,7 @@ const homeUrl = lang === 'es' ? '/' : '/en';
 
             <span class="separator" aria-hidden="true">|</span>
             
-            <a href="https://www.instagram.com/florpi37/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="nav-link">
+            <a href="https://www.instagram.com/florpi37/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="nav-social">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -48,7 +48,7 @@ const homeUrl = lang === 'es' ? '/' : '/en';
                 </svg>
             </a>
 
-            <a href="https://www.fiverr.com/florpiazza98" target="_blank" rel="noopener noreferrer" aria-label="Fiverr" class="nav-link">
+            <a href="https://www.fiverr.com/florpiazza98" target="_blank" rel="noopener noreferrer" aria-label="Fiverr" class="nav-social">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M8 19V9a4 4 0 0 1 4-4"></path> 
                     <path d="M5 9h6"></path>
@@ -157,27 +157,42 @@ const homeUrl = lang === 'es' ? '/' : '/en';
     }
 
     .lang-active {
-        color: #eb82be;      /* Rosa para el seleccionado */
+        color: #eb82be;      
         font-weight: 700;
-        pointer-events: none; /* No se puede clicar el que ya estás viendo */
+        pointer-events: none; 
         text-decoration: none;
     }
 
     .lang-inactive {
-        color: #999;         /* Gris para el otro */
+        color: #999;         
         font-weight: 400;
         text-decoration: none;
         transition: color 0.3s ease;
     }
 
     .lang-inactive:hover {
-        color: #333; /* Se oscurece al pasar el mouse */
+        color: #333; 
     }
 
     .lang-separator {
         color: #ddd;
         font-size: 0.8rem;
     }
+
+    .nav-social {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; 
+    padding: 8px;   
+}
+
+.nav-social svg {
+    width: 20px;    
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+}
 
 @media (max-width: 1023px) {
     .navbar {
@@ -226,6 +241,12 @@ const homeUrl = lang === 'es' ? '/' : '/en';
         padding: 5px;
         display: inline-block;
     }
+
+    .nav-social {
+        padding: 5px;
+    }
+
+    
 }
  
 </style>
